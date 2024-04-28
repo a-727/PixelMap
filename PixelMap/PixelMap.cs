@@ -46,9 +46,9 @@
         }
         public void SetRectangle(int x, int y, int width, int height, int color)
         {
-            for (int i = 0; i <= width; i++)
+            for (int i = 0; i < width; i++)
             {
-                for (int j = 0; j <= height; j++)
+                for (int j = 0; j < height; j++)
                 {
                    SetPixel(x+i, y+j, color);
                 }
@@ -59,15 +59,15 @@
             SetRectangle(x, y, width, height, color); //Main Rectangle
             SetRectangle(x-borderSize, y-borderSize, width+borderSize*2, borderSize, borderColor); //Top Border + top corners
             SetRectangle(x-borderSize, y+height, width+borderSize*2, borderSize, borderColor); //Bottom Border + bottom corners
-            SetRectangle(x-borderSize, y-borderSize, borderSize, height, borderColor); //Left Border
-            SetRectangle(x+width, y-borderSize, borderSize, height, borderColor);//Right Border
+            SetRectangle(x-borderSize, y, borderSize, height, borderColor); //Left Border
+            SetRectangle(x+width, y, borderSize, height, borderColor);//Right Border
         }
         private void ConsoleDrawPixel(int color)
         {
             ConsoleColor c_color = _consoleMap[color];
             Console.ForegroundColor = c_color;
             Console.BackgroundColor = c_color;
-            Console.Write("+");
+            Console.Write("++");
         }
         private void ConsolePixelLine(int[] colors)
         {
