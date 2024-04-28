@@ -5,8 +5,8 @@ public class SpikeRunner
     private static Random rand = new Random();
         private static int[] GenerateCactusPatch(int traveled)
         {
-            int[] chances = [1500 + 100*traveled, 1500 + 30*traveled, 1500+10*traveled, 1500, 1200+12*traveled, 600+50*traveled, 300+40*traveled, 80+30*traveled, 50*traveled];
-            int[][] results = [new int[]{0}, new int[]{0,0}, new int[]{0,0,0}, new int[]{0,0,0,0,0}, new int[]{0,1,0}, new int[]{0,0,2,0}, new int[]{0,0,0,3,0}, new int[]{0,0,0,4,0}, new int[]{1}];
+            int[] chances = [15000 + 100*traveled, 15000 + 30*traveled, 15000+10*traveled, 15000, 12000+12*traveled, 6000+50*traveled, 3000+40*traveled, 800+30*traveled, 50*traveled];
+            int[][] results = [new int[]{0}, new int[]{0,0}, new int[]{0,0,0}, new int[]{0,0,0,0,0}, new int[]{0,1,0}, new int[]{0,0,0,2,0}, new int[]{0,0,0,0,3,0}, new int[]{0,0,0,0,0,4,0,0}, new int[]{1}];
             int totalChance = 0;
             for (int i = 0; i < chances.Count(); i++)
             {
