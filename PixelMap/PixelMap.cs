@@ -88,4 +88,63 @@
             }
         }
     }
+
+    public class PmGameUtilities
+    {
+        public static string SelectMenu(string[]? options = null, string prompt = "Please select an option:", ConsoleColor highlightOption = ConsoleColor.Blue) //Use arrow keys to select an option from a menu. Console only.
+        {
+            if (options is null)
+            {
+                options = new string[] { "Yes", "No" };
+            }
+            int pos = 0;
+            ConsoleColor defaultBackgroundColor = Console.BackgroundColor;
+            ConsoleColor defaultForegroundColor = Console.ForegroundColor;
+            bool selectedOption = false;
+            while (!selectedOption)
+            {
+                Console.BackgroundColor = defaultBackgroundColor;
+                Console.ForegroundColor = defaultForegroundColor;
+                Console.Clear();
+                Console.WriteLine(prompt);
+                for (int i = 0; i < options.Length; i++)
+                {
+                    if (i == pos)
+                    {
+                        Console.BackgroundColor = highlightOption;
+                        Console.WriteLine($" > {options[i]}");
+                    }
+                    else
+                    {
+                        Console.BackgroundColor = defaultBackgroundColor;
+                        Console.WriteLine($" • {options[i]}");
+                    }
+                }
+                Console.BackgroundColor = defaultBackgroundColor;
+                Console.WriteLine("Use arrow keys to move. Press space to select.");
+                ConsoleKey currentKey = Console.ReadKey().Key;
+                switch (currentKey)
+                {
+                    case ConsoleKey.DownArrow:
+                        pos++;
+                        if (pos >= options.Length)
+                        {
+                            pos = 0;
+                        }
+                        break;
+                    case ConsoleKey.UpArrow:
+                        pos--;
+                        if (pos < 0)
+                        {
+                            pos = options.Length - 1;
+                        }
+                        break;
+                    case ConsoleKey.Spacebar:
+                        selectedOption = true;
+                        break;
+                }
+            }
+            return options[pos];
+        }
+    }
 }
