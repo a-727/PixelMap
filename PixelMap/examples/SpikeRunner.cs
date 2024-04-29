@@ -24,9 +24,9 @@ public class SpikeRunner
             }
             return new int[] {0};
         }
-        static void Main(string[] args)
+        public static void PlaySpikeRunner()
         {
-            PixelMap map = new PixelMap(mapSizeY:10, mapSizeX:45, defaultColor:7);
+            PixelMap map = new PixelMap(mapSizeY:10, mapSizeX:45, defaultColor:15);
             bool runCode = true;
             int current = 0;
             int height = 0;
@@ -39,7 +39,7 @@ public class SpikeRunner
             }
             while (runCode)
             {
-                map.SetRectangleOutline(1,1,43,8,1,7,0);
+                map.SetRectangleOutline(1,1,43,8,1,15,0);
                 while (cactusHeight.Count < current + 45)
                 {
                     foreach (int i in GenerateCactusPatch(current))
@@ -96,7 +96,7 @@ public class SpikeRunner
                     int g = cactusHeight[i+current];
                     map.SetRectangle(1+i,9-g,1,g,12);
                 }
-                map.SetPixel(1, 8-height, 9);
+                map.SetPixel(1, 8-height, 10);
                 map.DrawConsole();
                 Thread.Sleep(250);
             }
