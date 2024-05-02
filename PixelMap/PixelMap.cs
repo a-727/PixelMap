@@ -54,6 +54,15 @@
                 }
             }
         }
+
+        public void ChanceDefaultColor(int changeTo)
+        {
+            if (changeTo < _consoleMap.Length)
+            {
+                DefaultColor = changeTo;
+            }
+        }
+        
         public void SetRectangleOutline(int x, int y, int width, int height, int borderSize, int color, int borderColor)
         {
             SetRectangle(x, y, width, height, color); //Main Rectangle
