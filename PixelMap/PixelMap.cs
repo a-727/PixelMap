@@ -9,7 +9,7 @@ namespace PixelMap
     {
         private int[][] _map;
         private int _defaultColor;
-        private PmGame game;
+        private PmGame? game;
         private ConsoleColor[] _consoleMap = new ConsoleColor[] {
             ConsoleColor.Black, 
             ConsoleColor.DarkBlue, 
@@ -165,6 +165,12 @@ namespace PixelMap
         {
             return game.GetKeyboardState();
         }
+
+        public void QuitMono()
+        {
+            game.QuitGame();
+            game = null;
+        }
     }
 
     public class PmGameUtilities
@@ -266,6 +272,13 @@ namespace PixelMap
             }
             base.Update(gameTime);
         }
+        
+        protected override void LoadContent()
+        {
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
+            basicEffect = new BasicEffect(GraphicsDevice);
+            basicEffect.VertexColorEnabled = true;
+        }
 
         public int PixelSize(int x_total, int y_total)
         {
@@ -277,7 +290,6 @@ namespace PixelMap
             }
             return b;
         }
-        
 
         private void DrawMapRow(int[] row, Color[] int_to_color, int pixelSize, int y, int x_offset)
         {
@@ -308,6 +320,11 @@ namespace PixelMap
         public KeyboardState GetKeyboardState()
         {
             return Keyboard.GetState();
+        }
+
+        public void QuitGame()
+        {
+            Exit();
         }
     }
     
