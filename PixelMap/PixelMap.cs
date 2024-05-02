@@ -27,26 +27,28 @@ namespace PixelMap
             ConsoleColor.Magenta,
             ConsoleColor.Yellow, 
             ConsoleColor.White,
-            ConsoleColor.Red
+            ConsoleColor.Red,
+            ConsoleColor.DarkMagenta,
         };
-        private Microsoft.Xna.Framework.Color[] _monoMap = new Microsoft.Xna.Framework.Color[] {
-            Microsoft.Xna.Framework.Color.Black,
-            Microsoft.Xna.Framework.Color.DarkBlue,
-            Microsoft.Xna.Framework.Color.DarkGreen,
-            Microsoft.Xna.Framework.Color.DarkCyan,
-            Microsoft.Xna.Framework.Color.DarkRed,
-            Microsoft.Xna.Framework.Color.DarkMagenta,
-            Microsoft.Xna.Framework.Color.DarkGoldenrod,
-            Microsoft.Xna.Framework.Color.Gray,
-            Microsoft.Xna.Framework.Color.DarkGray,
-            Microsoft.Xna.Framework.Color.Blue,
-            Microsoft.Xna.Framework.Color.Green,
-            Microsoft.Xna.Framework.Color.Cyan,
-            Microsoft.Xna.Framework.Color.Red,
-            Microsoft.Xna.Framework.Color.Magenta,
-            Microsoft.Xna.Framework.Color.Yellow,
-            Microsoft.Xna.Framework.Color.White,
-            Microsoft.Xna.Framework.Color.Orange
+        private Color[] _monoMap = new Color[] {
+            Color.Black,
+            Color.DarkBlue,
+            Color.DarkGreen,
+            Color.DarkCyan,
+            Color.DarkRed,
+            Color.DarkMagenta,
+            Color.DarkGoldenrod,
+            Color.Gray,
+            Color.DarkGray,
+            Color.Blue,
+            Color.Green,
+            Color.Cyan,
+            Color.Red,
+            Color.Magenta,
+            Color.Yellow,
+            Color.White,
+            Color.Orange,
+            Color.Purple
         };
         public PixelMap(int defaultColor = 1, int[][]? startingMap = null, int mapSizeX = 100, int mapSizeY = 50)
         {
@@ -242,7 +244,7 @@ namespace PixelMap
             Content.RootDirectory = "Content";
             IsMouseVisible = showMouse;
         }
-        public void DrawRectangle(float x, float y, float width, float height, Microsoft.Xna.Framework.Color color) //x and y are positions for the upper-left hand corner.
+        public void DrawRectangle(float x, float y, float width, float height, Color color) //x and y are positions for the upper-left hand corner.
         {
             VertexPositionColor[] vertices_a = new VertexPositionColor[3];
             VertexPositionColor[] vertices_b = new VertexPositionColor[3];
@@ -277,7 +279,7 @@ namespace PixelMap
         }
         
 
-        private void DrawMapRow(int[] row, Microsoft.Xna.Framework.Color[] int_to_color, int pixelSize, int y, int x_offset)
+        private void DrawMapRow(int[] row, Color[] int_to_color, int pixelSize, int y, int x_offset)
         {
             for (int i = 0; i < row.Length; i++)
             {
@@ -285,7 +287,7 @@ namespace PixelMap
             }
         }
         
-        public void DrawFullMap(int[][] map, int defaultColor, Microsoft.Xna.Framework.Color[] int_to_color)
+        public void DrawFullMap(int[][] map, int defaultColor, Color[] int_to_color)
         {
             basicEffect.Projection = Matrix.CreateOrthographicOffCenter(0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, 0, 0, 1);
             GraphicsDevice.Clear(int_to_color[defaultColor]);
