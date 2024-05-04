@@ -71,9 +71,10 @@ namespace PixelMap
             _defaultColor = defaultColor;
         }
 
-        public void SetupMono()
+        public void SetupMono(Action runFrame)
         {
-            game = new PmGame();
+            game = new PmGame(runFrame);
+            game.Run();
         }
         
         public void ResetMap(int resetTo = -1)
@@ -244,11 +245,13 @@ namespace PixelMap
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private BasicEffect basicEffect;
-        public PmGame(bool showMouse = true)
+        private Action _runExternalGameFrame;
+        public PmGame(Action runFrame, bool showMouse = true)
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = showMouse;
+            _runExternalGameFrame = runFrame;
         }
         public void DrawRectangle(float x, float y, float width, float height, Color color) //x and y are positions for the upper-left hand corner.
         {
@@ -270,6 +273,7 @@ namespace PixelMap
             {
                 Exit();
             }
+            _runExternalGameFrame();
             base.Update(gameTime);
         }
         
